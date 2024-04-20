@@ -5,8 +5,6 @@ import plotly.express as px
 import pandas as pd
 import plotly.graph_objects as go # or plotly.express as px
 from plotly.express import data
-import dash_mantine_components as dmc
-from dash_iconify import DashIconify
 
 # %%
 # Import data
