@@ -21,8 +21,8 @@ df['Month'] = df['Date'].dt.month_name()
 df_table = df.drop(['WeightKg', 'BMIBin', 'StepBin', 'Month', 'SleepEff'], axis=1)
 
 # Get min and max dates from the DataFrame
-min_date = df['Date'].min()
-max_date = df['Date'].max()
+min_date = min(df['Date'])
+max_date = max(df['Date'])
 
 # Initial y-axis option
 y_axis_options = ['SleepEff', 'TotalMinutesAsleep', 'TotalTimeInBed']
@@ -166,11 +166,11 @@ app.layout = html.Div([
             html.Label("Step Total Range:"),
             dcc.RangeSlider(
                 id='steptotal-slider',
-                min=df_table['StepTotal'].min(),  # Minimum StepTotal value
-                max=df_table['StepTotal'].max(),  # Maximum StepTotal value
-                value=[df_table['StepTotal'].min(), df_table['StepTotal'].max()],  # Initial range
-                marks={df_table['StepTotal'].min(): str(df_table['StepTotal'].min()),
-                    df_table['StepTotal'].max(): str(df_table['StepTotal'].max())},  # Only show min and max values
+                min=min(df_table['StepTotal']),  # Minimum StepTotal value
+                max=max(df_table['StepTotal']),  # Maximum StepTotal value
+                value=[min(df_table['StepTotal']), max(df_table['StepTotal'])],  # Initial range
+                marks={min(df_table['StepTotal']): str(min(df_table['StepTotal'])),
+                    max(df_table['StepTotal']): str(max(df_table['StepTotal']))},  # Only show min and max values
                 step=1,  # Increment by 1
                 tooltip={'always_visible': True, 'placement': 'bottom'}  # Show tooltip always for debugging
             ),
