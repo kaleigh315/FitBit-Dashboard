@@ -3,7 +3,6 @@ numpy
 pandas
 plotly
 pathlib
-dash
 gunicorn
 statsmodels
 dash_mantine_components
