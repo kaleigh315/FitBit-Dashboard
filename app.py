@@ -178,44 +178,44 @@ app.layout = html.Div([
             html.Label("Calories Range:"),
             dcc.RangeSlider(
                 id='calories-slider',
-                min=df_table['Calories'].min(),  # Minimum Calories value
-                max=df_table['Calories'].max(),  # Maximum Calories value
-                value=[df_table['Calories'].min(), df_table['Calories'].max()],  # Initial range
-                marks={df_table['Calories'].min(): str(df_table['Calories'].min()),
-                    df_table['Calories'].max(): str(df_table['Calories'].max())},  # Only show min and max values
+                min=min(df_table['Calories']),  # Minimum Calories value
+                max=max(df_table['Calories']),  # Maximum Calories value
+                value=[min(df_table['Calories']), max(df_table['Calories'])],  # Initial range
+                marks={min(df_table['Calories']): str(min(df_table['Calories'])),
+                    max(df_table['Calories']): str(max(df_table['Calories']))},  # Only show min and max values
                 step=1,  # Increment by 1
                 tooltip={'always_visible': True, 'placement': 'bottom'}  # Show tooltip always for debugging
             ),
             html.Label("Weight (lbs) Range:"),
             dcc.RangeSlider(
                 id='weight-slider',
-                min=df_table['WeightPounds'].min(),  # Minimum WeightPounds value
-                max=df_table['WeightPounds'].max(),  # Maximum WeightPounds value
-                value=[df_table['WeightPounds'].min(), df_table['WeightPounds'].max()],  # Initial range
-                marks={df_table['WeightPounds'].min(): str(df_table['WeightPounds'].min()),
-                    df_table['WeightPounds'].max(): str(df_table['WeightPounds'].max())},  # Only show min and max values
+                min=min(df_table['WeightPounds']),  # Minimum WeightPounds value
+                max=max(df_table['WeightPounds']),  # Maximum WeightPounds value
+                value=[min(df_table['WeightPounds']), max(df_table['WeightPounds'])],  # Initial range
+                marks={min(df_table['WeightPounds']): str(min(df_table['WeightPounds'])),
+                    max(df_table['WeightPounds']): str(max(df_table['WeightPounds']))},  # Only show min and max values
                 step=1,  # Increment by 1
                 tooltip={'always_visible': True, 'placement': 'bottom'}  # Show tooltip only when sliding
             ),
             html.Label("BMI Range:"),
             dcc.RangeSlider(
                 id='bmi-slider',
-                min=df_table['BMI'].min(),  # Minimum BMI value
-                max=df_table['BMI'].max(),  # Maximum BMI value
-                value=[df_table['BMI'].min(), df_table['BMI'].max()],  # Initial range
-                marks={df_table['BMI'].min(): str(df_table['BMI'].min()),
-                    df_table['BMI'].max(): str(df_table['BMI'].max())},  # Only show min and max values
+                min=min(df_table['BMI']),  # Minimum BMI value
+                max=max(df_table['BMI']),  # Maximum BMI value
+                value=[min(df_table['BMI']), max(df_table['BMI'])],  # Initial range
+                marks={min(['BMI']): str(min(df_table['BMI'])),
+                    max(df_table['BMI']): str(max(df_table['BMI']))},  # Only show min and max values
                 step=1,  # Increment by 1
                 tooltip={'always_visible': True, 'placement': 'bottom'}  # Show tooltip only when sliding
             ),
             html.Label("Time Asleep Range:"),
             dcc.RangeSlider(
                 id='sleep-slider',
-                min=df_table['TotalMinutesAsleep'].min(),  # Minimum TotalMinutesAsleep value
-                max=df_table['TotalMinutesAsleep'].max(),  # Maximum TotalMinutesAsleep value
-                value=[df_table['TotalMinutesAsleep'].min(), df_table['TotalMinutesAsleep'].max()],  # Initial range
-                marks={df_table['TotalMinutesAsleep'].min(): str(df_table['TotalMinutesAsleep'].min()),
-                    df_table['TotalMinutesAsleep'].max(): str(df_table['TotalMinutesAsleep'].max())},  # Only show min and max values
+                min=min(df_table['TotalMinutesAsleep']),  # Minimum TotalMinutesAsleep value
+                max=max(df_table['TotalMinutesAsleep']),  # Maximum TotalMinutesAsleep value
+                value=[min(df_table['TotalMinutesAsleep']), max(df_table['TotalMinutesAsleep'])],  # Initial range
+                marks={min(df_table['TotalMinutesAsleep']): str(min(df_table['TotalMinutesAsleep'])),
+                    max(df_table['TotalMinutesAsleep']): str(max(df_table['TotalMinutesAsleep']))},  # Only show min and max values
                 step=1,  # Increment by 1
                 tooltip={'always_visible': True, 'placement': 'bottom'}  # Show tooltip only when sliding
             ),
