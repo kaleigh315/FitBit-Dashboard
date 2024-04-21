@@ -8,7 +8,7 @@ from plotly.express import data
 
 # %%
 # Import data
-df = pd.read_csv('actualdata.csv')
+df = pd.read_csv('fitbitdata.csv')
 df.head()
 
 # %%
@@ -131,6 +131,11 @@ app.layout = html.Div([
         ], className="six columns"),
     ], className="row"),
 
+    #heading for datatable
+    html.Div([
+        html.H4("Data Table"),
+    ], className="row", style={'text-align': 'left'}),
+
     # Dashboard at the bottom
     html.Div([
         # Data table on the left
@@ -235,7 +240,7 @@ def scatter_plot(selected_month, uncolored_dots, n_clicks, trendline_on):
         filtered_df = filtered_df[filtered_df['BMIBin'] != 'Unknown']
 
     # Define color mapping and legend labels
-    color_map = {'Normal': 'purple', 'Overweight': 'red', 'Unknown': 'lightblue'}
+    color_map = {'Normal (18.5-24.9)': 'purple', 'Overweight (25-29.9)': 'red', 'Unknown': 'lightblue'}
     legend_labels = {'Normal': 'Normal BMI', 'Overweight': 'Overweight BMI', 'Unknown': 'Unknown BMI'}
 
     # Determine variables for x and y axes
