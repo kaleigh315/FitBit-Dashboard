@@ -129,7 +129,7 @@ app.layout = html.Div([
                 ),
             ], className="scatter-controls-box", style={'border': '1px solid grey', 'border-radius': '5px', 'margin-bottom': '50px'})
         ], className="six columns"),
-    ], className="row"),
+    ],),
 
     #heading for datatable
     html.Div([
