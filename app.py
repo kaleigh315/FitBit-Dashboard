@@ -54,7 +54,7 @@ app.layout = html.Div([
                      style={'width': '30px', 'height': '30px'}),
             href="https://github.com/racheljhuh/FitBit-Dashboard",
             target="_blank",  # Open link in a new tab
-            style={'position': 'absolute', 'top': '10px', 'right': '10px'}
+            style={'position': 'absolute', 'top': '10px'}
         )
     ]),
     # Header and description centered at the top
