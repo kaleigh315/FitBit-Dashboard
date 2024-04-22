@@ -5,10 +5,13 @@ import plotly.express as px
 import pandas as pd
 import plotly.graph_objects as go # or plotly.express as px
 from plotly.express import data
+import dash_mantine_components as dmc
+from dash_iconify import DashIconify
 
 # %%
 # Import data
-df = pd.read_csv('fitbitdata.csv')
+file_path = 'data/fitbitdata.csv'
+df = pd.read_csv(file_path)
 df.head()
 
 # %%
@@ -71,7 +74,7 @@ app.layout = html.Div([
             # Area chart
             html.Div([
                 dcc.Graph(id='area-chart'),
-            ], style={'margin-top': '20px'}),
+            ],
             
             # Controls for the area chart
             html.Div([
@@ -101,7 +104,7 @@ app.layout = html.Div([
             # Scatter plot
             html.Div([
                 dcc.Graph(id='scatter-plot'),
-            ], style={'margin-bottom': '20px'}),
+            ]),
             
             # Controls for the scatter plot
             html.Div([
@@ -128,7 +131,7 @@ app.layout = html.Div([
                 ),
             ], className="scatter-controls-box", style={'border': '1px solid grey', 'border-radius': '5px', 'margin-bottom': '50px'})
         ], className="six columns"),
-    ],),
+    ], className="row"),
 
     #heading for datatable
     html.Div([
@@ -145,7 +148,7 @@ app.layout = html.Div([
                 data=df_table.to_dict('records'),
                 page_size=10,  # Set page size to limit rows displayed
                 sort_action='native',  # Enable sorting
-                # Adjusted style
+                style_table={'overflowX': 'auto', 'width': '100%'},  # Adjusted style
             )
         ], className="eight columns"),
         # Interactive elements
@@ -193,22 +196,22 @@ app.layout = html.Div([
             html.Label("Weight (lbs) Range:"),
             dcc.RangeSlider(
                 id='weight-slider',
-                min=min(df_table['WeightPounds']),  # Minimum WeightPounds value
-                max=max(df_table['WeightPounds']),  # Maximum WeightPounds value
-                value=[min(df_table['WeightPounds']), max(df_table['WeightPounds'])],  # Initial range
-                marks={min(df_table['WeightPounds']): str(min(df_table['WeightPounds'])),
-                    max(df_table['WeightPounds']): str(max(df_table['WeightPounds']))},  # Only show min and max values
+                min=df_table['WeightPounds'].min(),  # Minimum WeightPounds value
+                max=df_table['WeightPounds'].max(),  # Maximum WeightPounds value
+                value=[df_table['WeightPounds'].min(), df_table['WeightPounds'].max()],  # Initial range
+                marks={df_table['WeightPounds'].min(): str(df_table['WeightPounds'].min()),
+                    df_table['WeightPounds'].max(): str(df_table['WeightPounds'].max())},  # Only show min and max values
                 step=1,  # Increment by 1
                 tooltip={'always_visible': True, 'placement': 'bottom'}  # Show tooltip only when sliding
             ),
             html.Label("BMI Range:"),
             dcc.RangeSlider(
                 id='bmi-slider',
-                min=min(df_table['BMI']),  # Minimum BMI value
-                max=max(df_table['BMI']),  # Maximum BMI value
-                value=[min(df_table['BMI']), max(df_table['BMI'])],  # Initial range
-                marks={min(['BMI']): str(min(df_table['BMI'])),
-                    max(df_table['BMI']): str(max(df_table['BMI']))},  # Only show min and max values
+                min=df_table['BMI'].min(),  # Minimum BMI value
+                max=df_table['BMI'].max(),  # Maximum BMI value
+                value=[df_table['BMI'].min(), df_table['BMI'].max()],  # Initial range
+                marks={df_table['BMI'].min(): str(df_table['BMI'].min()),
+                    df_table['BMI'].max(): str(df_table['BMI'].max())},  # Only show min and max values
                 step=1,  # Increment by 1
                 tooltip={'always_visible': True, 'placement': 'bottom'}  # Show tooltip only when sliding
             ),
@@ -223,7 +226,7 @@ app.layout = html.Div([
                 step=1,  # Increment by 1
                 tooltip={'always_visible': True, 'placement': 'bottom'}  # Show tooltip only when sliding
             ),
-        ], className="six columns"),
+        ], className="four columns"),
     ], className="row")
 ], className="container")
 
