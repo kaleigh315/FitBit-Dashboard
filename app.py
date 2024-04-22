@@ -54,7 +54,6 @@ app.layout = html.Div([
                      style={'width': '30px', 'height': '30px'}),
             href="https://github.com/racheljhuh/FitBit-Dashboard",
             target="_blank",  # Open link in a new tab
-            style={'position': 'absolute', 'top': '10px'}
         )
     ]),
     # Header and description centered at the top
@@ -72,7 +71,7 @@ app.layout = html.Div([
             # Area chart
             html.Div([
                 dcc.Graph(id='area-chart'),
-            ], style={'position': 'relative', 'margin-top': '20px'}),
+            ], style={'margin-top': '20px'}),
             
             # Controls for the area chart
             html.Div([
@@ -102,7 +101,7 @@ app.layout = html.Div([
             # Scatter plot
             html.Div([
                 dcc.Graph(id='scatter-plot'),
-            ], style={'position': 'relative', 'margin-bottom': '20px'}),
+            ], style={'margin-bottom': '20px'}),
             
             # Controls for the scatter plot
             html.Div([
@@ -146,7 +145,7 @@ app.layout = html.Div([
                 data=df_table.to_dict('records'),
                 page_size=10,  # Set page size to limit rows displayed
                 sort_action='native',  # Enable sorting
-                style_table={'overflowX': 'auto', 'width': '100%'},  # Adjusted style
+                # Adjusted style
             )
         ], className="eight columns"),
         # Interactive elements
@@ -224,7 +223,7 @@ app.layout = html.Div([
                 step=1,  # Increment by 1
                 tooltip={'always_visible': True, 'placement': 'bottom'}  # Show tooltip only when sliding
             ),
-        ], className="four columns"),
+        ], className="six columns"),
     ], className="row")
 ], className="container")
 
